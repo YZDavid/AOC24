@@ -1,0 +1,13 @@
+This problem seems a little tricky at first, but I think it is ok if you break it down into something like a graph problem.
+What seems difficult is that there are so many possibilities of having XMAS spelled out. However, if you break down the problem,
+you realise that it all matches has to start with the character X. We can search through the entire input and whenever we find X,
+look for all possible XMAS combinations in all 8 directions. (up, down, left, right, and the four diagonals)
+
+
+Read input and represent the raw input as a 2D array
+Use a double nested for loop to scan through the input array, looking out for X
+When X is found, loop through the 8 directions and determine whether each direction can produce XMAS. Terminate early if it does not to save time.
+Increment the count by one if a valid XMAS keyword is found.
+
+
+Part 2 is arguably easier, search in 4 diagnoal directions by pair. Each diagnal pair should contain exclusively either M or S.
