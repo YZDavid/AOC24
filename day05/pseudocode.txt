@@ -1,0 +1,26 @@
+== DRAFT ==
+
+Continuing yesterday's tradition of writing pseudocode before I attempt writing a solution
+Today's problem is one that is of dependencies, where a list of dependencies are produced,
+several input lines are then given to determine if each line is correct based on the overall dependencies.
+
+My thought process for this is to model this as a graph solution using Directed Acyclic Graphs (DAGs)
+Reason being for a dependency problem like this, there should not be any circular dependencies, otherwise this is
+not solvable.
+
+Start by constructing an adjacency matrix for the given inputs to form a DAG. Once this DAG is formed,
+we will need to run topological sort on the DAG to come up with a reference array to check the numbers sort order.
+To make it more efficient, since we are constantly checking the position of this topological sorted array, we 
+can put the numbers together with its index inside a hashmap. This makes checking O(1) time, with the trade-off of
+O(n) space complexity, where n is the number of dependencies in our topo sorted array
+
+The rest of the algorithm would be trivial, check for validity, take the middle number. Finally, sum all valid middle numbers.
+
+== END OF DRAFT ==
+
+Turns out that I misinterpreted the question slightly. The full input does not assume that all pre-requisites would end up forming a
+full DAG. We only need to concern ourselves with a subset of the pre-requisites, which are the provided instruction sets.
+Each instruction set only contains a few numbers, so we limit our creation of the DAG to those few numbers in order to create a valid
+toposort. This is only really necessary for part 2, since part 1 can be accomplished by just checking if the numbers adhere to the dependencies.
+This can be done with a double for loop, which does not take much time since each instruction set is quite small.
+The second part can make use of the modified version of the toposort algorithm I wrote in the first draft.
